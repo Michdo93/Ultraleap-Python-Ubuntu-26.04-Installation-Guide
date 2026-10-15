@@ -13,19 +13,9 @@ wget https://s3.eu-west-1.amazonaws.com/downloads.ultraleap.com/software/trackin
 sudo apt install -y tracking-software-linux-x64-6.2.0.deb
 ```
 
-Wichtig ist, dass die Installation der Datei `tracking-software-linux-x64-6.2.0.deb` allein noch nicht bedeutet, dass Python bereits auf die Trackingdaten zugreifen kann. Ultraleap verwendet dafür die LeapC-API, die mit dem Tracking Service kommuniziert.&#x20;
-
-[image](https://www.google.com/s2/favicons?domain=https://github.com\&sz=32)
-
-
+Wichtig ist, dass die Installation der Datei `tracking-software-linux-x64-6.2.0.deb` allein noch nicht bedeutet, dass Python bereits auf die Trackingdaten zugreifen kann. Ultraleap verwendet dafür die LeapC-API, die mit dem Tracking Service kommuniziert.
 
 Außerdem gibt es einen wichtigen Kompatibilitätspunkt: Ultraleaps Linux-Dokumentation nennt Ubuntu 22.04 LTS als unterstützte Plattform. Ubuntu 26.04 liegt außerhalb dieser dokumentierten Unterstützung. Wir sollten daher zuerst prüfen, ob die installierte Software und ihre Bibliotheken unter deiner Ubuntu-Version korrekt laufen, bevor wir weitere Pakete oder eigene udev-Regeln hinzufügen.&#x20;
-
-[image](https://www.google.com/s2/favicons?domain=https://docs.ultraleap.com\&sz=32)
-
-Ultraleap documentation
-
-
 
 ## 1. Zuerst die vorhandene Installation prüfen
 
@@ -64,13 +54,7 @@ Wichtig: Erstelle noch keine eigenen udev-Regeln. Die benötigten Berechtigungen
 
 ## 2. Python vorbereiten
 
-Ultraleap stellt offizielle Python-Bindings für die LeapC-API bereit: [ultraleap/leapc-python-bindings auf GitHub](https://github.com/ultraleap/leapc-python-bindings). Sie benötigen die installierte Tracking-Software und eine kompatible Python-Umgebung. Die Bibliothek verwendet außerdem eine native CFFI-Komponente.&#x20;
-
-[image](https://www.google.com/s2/favicons?domain=https://github.com\&sz=32)
-
-GitHub
-
-
+Ultraleap stellt offizielle Python-Bindings für die LeapC-API bereit: [ultraleap/leapc-python-bindings auf GitHub](https://github.com/ultraleap/leapc-python-bindings). Sie benötigen die installierte Tracking-Software und eine kompatible Python-Umgebung. Die Bibliothek verwendet außerdem eine native CFFI-Komponente.
 
 Installiere zunächst die üblichen Build-Werkzeuge und Python-Komponenten:
 
@@ -115,13 +99,7 @@ python -m pip install -r requirements.txt
 python -m pip install -e leapc-python-api
 ```
 
-Die Requirements enthalten unter anderem `build`, `cffi`, `opencv-python` und `numpy`.&#x20;
-
-[image](https://www.google.com/s2/favicons?domain=https://github.com\&sz=32)
-
-GitHub
-
-
+Die Requirements enthalten unter anderem `build`, `cffi`, `opencv-python` und `numpy`.
 
 Teste anschließend den Import:
 
@@ -129,13 +107,7 @@ Teste anschließend den Import:
 python -c "import leap; print('Leap Python API imported successfully')"
 ```
 
-Falls dabei ein Fehler wie `ModuleNotFoundError: No module named 'leapc_cffi._leapc_cffi'` auftritt, fehlt wahrscheinlich das passende native Python-Modul für deine Python-Version. Ultraleap dokumentiert dafür einen Build aus dem Quellcode.&#x20;
-
-[image](https://www.google.com/s2/favicons?domain=https://github.com\&sz=32)
-
-GitHub
-
-
+Falls dabei ein Fehler wie `ModuleNotFoundError: No module named 'leapc_cffi._leapc_cffi'` auftritt, fehlt wahrscheinlich das passende native Python-Modul für deine Python-Version. Ultraleap dokumentiert dafür einen Build aus dem Quellcode.
 
 Führe dann gegebenenfalls Folgendes aus:
 
@@ -166,13 +138,7 @@ Falls `leapctl` vorhanden ist, zeigt dir das Hilfsprogramm die unterstützten Ve
 sudo leapctl eula
 ```
 
-Führe den letzten Befehl nur aus, wenn die EULA noch nicht akzeptiert wurde und du den Lizenzbedingungen zustimmst. Die genaue Verfügbarkeit der Befehle hängt von der installierten Softwareversion ab.&#x20;
-
-[image](https://www.google.com/s2/favicons?domain=https://docs.ultraleap.com\&sz=32)
-
-Ultraleap documentation
-
-
+Führe den letzten Befehl nur aus, wenn die EULA noch nicht akzeptiert wurde und du den Lizenzbedingungen zustimmst. Die genaue Verfügbarkeit der Befehle hängt von der installierten Softwareversion ab.
 
 Prüfe außerdem:
 
@@ -234,13 +200,7 @@ Für den tatsächlichen Trackingtest verwendest du anschließend das offizielle 
 python examples/tracking_event_example.py
 ```
 
-Das Beispiel ist im offiziellen Repository enthalten.&#x20;
-
-[image](https://www.google.com/s2/favicons?domain=https://github.com\&sz=32)
-
-GitHub
-
-
+Das Beispiel ist im offiziellen Repository enthalten.
 
 ## 7. Was du am Ende benötigst
 
